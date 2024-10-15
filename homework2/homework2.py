@@ -15,13 +15,22 @@ def decimal_to_octal(n):
         return decimal_to_octal(n // 8) + str(n % 8)
 
 # Ввод числа с клавиатуры
-number = int(input("Введите десятичное число: "))
+try:
+    number = int(input("Введите десятичное число: "))
 
-# Перевод в двоичную и восьмеричную системы
-binary_result = decimal_to_binary(number)
-octal_result = decimal_to_octal(number)
+    # Перевод в двоичную и восьмеричную системы
+    if number < 0:
+        binary_result = '-' + decimal_to_binary(-number)
+        octal_result = '-' + decimal_to_octal(-number)
+    else:
+        binary_result = decimal_to_binary(number)
+        octal_result = decimal_to_octal(number)
 
-# Вывод результатов
-print(f"Двоичное представление: {binary_result}")
-print(f"Восьмеричное представление: {octal_result}")
+    # Вывод результатов
+    print(f"Двоичное представление: {binary_result}")
+    print(f"Восьмеричное представление: {octal_result}")
+
+except ValueError:
+    print("Ошибка: Введено не число.")
+
 
